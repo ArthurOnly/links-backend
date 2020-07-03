@@ -1,4 +1,6 @@
-const STATUS_CODE_OK = 201
+const getMessage = require('../helpers/messages')
+
+const STATUS_CODE_OK = 200
 const STATUS_CODE_BAD_REQUEST = 400
 const STATUS_CODE_UNAUTHORIZED = 401
 const STATUS_CODE_NOT_FOUND = 404
@@ -6,8 +8,8 @@ const STATUS_CODE_SERVER_ERROR = 500
 
 const TYPE_JSON = 'application/json'
 
-const jsonOK = function(data, message, metadata){      
-    this.message = message = message ? message : 'Created'
+const jsonOk = function(data, message, metadata){      
+    this.message = message = message ? message : getMessage('response.jsonOk')
     this.metadata = metadata = metadata ? metadata : {}
 
     this.status(STATUS_CODE_OK)
@@ -16,8 +18,8 @@ const jsonOK = function(data, message, metadata){
     return this.json({message, data, metadata})
 }
 
-const jsonBAD = function(data, message, metadata){      
-    this.message = message = message ? message : 'Bad request'
+const jsonBadRequest = function(data, message, metadata){      
+    this.message = message = message ? message : getMessage('response.badRequest')
     this.metadata = metadata = metadata ? metadata : {}
 
     this.status(STATUS_CODE_BAD_REQUEST)
@@ -26,8 +28,8 @@ const jsonBAD = function(data, message, metadata){
     return this.json({message, data, metadata})
 }
 
-const jsonUNAUTHORIZED = function(data, message, metadata){      
-    this.message = message = message ? message : 'UNAUTHORIZED'
+const jsonUnauthorized = function(data, message, metadata){      
+    this.message = message = message ? message : getMessage('response.unauthorized')
     this.metadata = metadata = metadata ? metadata : {}
 
     this.status(STATUS_CODE_UNAUTHORIZED)
@@ -36,8 +38,8 @@ const jsonUNAUTHORIZED = function(data, message, metadata){
     return this.json({message, data, metadata})
 }
 
-const jsonNOT_FOUND = function(data, message, metadata){      
-    this.message = message = message ? message : 'Not found'
+const jsonNotFound = function(data, message, metadata){      
+    this.message = message = message ? message : getMessage('response.notFound')
     this.metadata = metadata = metadata ? metadata : {}
 
     this.status(STATUS_CODE_NOT_FOUND)
@@ -46,8 +48,8 @@ const jsonNOT_FOUND = function(data, message, metadata){
     return this.json({message, data, metadata})
 }
 
-const jsonSERVER_ERROR = function(data, message, metadata){      
-    this.message = message = message ? message : 'Server error'
+const jsonServerError = function(data, message, metadata){      
+    this.message = message = message ? message : getMessage('response.serverError')
     this.metadata = metadata = metadata ? metadata : {}
 
     this.status(STATUS_CODE_SERVER_ERROR)
@@ -57,11 +59,11 @@ const jsonSERVER_ERROR = function(data, message, metadata){
 }
 
 const response = (req,res,next) => {
-    res.jsonOK = jsonOK
-    res.jsonBAD = jsonBAD
-    res.jsonUNAUTHORIZED = jsonUNAUTHORIZED
-    res.jsonNOT_FOUND = jsonNOT_FOUND
-    res.jsonSERVER_ERROR = jsonSERVER_ERROR
+    res.jsonOk = jsonOk
+    res.jsonBadRequest = jsonBadRequest
+    res.jsonUnauthorized = jsonUnauthorized
+    res.jsonNotFound = jsonNotFound
+    res.jsonServerError = jsonServerError
     next()
 }
 
