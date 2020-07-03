@@ -15,13 +15,13 @@ router.post('/sign-up', async (req,res)=>{
 
     const email = json.email
     const emailExist =  await Account.findOne({where: {email:email}})
-    if (emailExist) return res.json('Email alery exists')
+    if (emailExist) return res.jsonBAD(null,'Email alery exists')
 
     const hashPassword = bcrypt.hashSync(json.password,saltRounds)
 
     const newAccount = await Account.create({email:email,password:hashPassword})
 
-    return res.json(newAccount)
+    return res.jsonOK(newAccount)
 })
 
 module.exports = router
