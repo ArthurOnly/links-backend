@@ -10,14 +10,18 @@ router.get('/sign-in', async(req,res)=>{
     return res.json('sign-in')
 })
 
-router.get('/sign-up', async (req,res)=>{
-    const email = 'arthurmedeirospaiva56@gmail.com'
-    const password = '123456'
-    const hash = bcrypt.hashSync(password,saltRounds)
+router.post('/sign-up', async (req,res)=>{
+    const json = req.body
 
-    const result = await Account.create({email:email,password:hash})
+    const email = json.email
+    const emailExist =  await Account.findOne({where: {email:email}})
+    if (emailExist) return res.json('Email alery exists')
 
-    return res.json(result)
+    const hashPassword = bcrypt.hashSync(json.password,saltRounds)
+
+    const newAccount = await Account.create({email:email,password:hashPassword})
+
+    return res.json(newAccount)
 })
 
 module.exports = router
