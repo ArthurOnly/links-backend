@@ -10,10 +10,18 @@
   "author": "Arthur Medeiros Paiva",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mysql2": "^2.1.0",
     "nodemon": "^2.0.4",
-    "sequelize": "^6.2.3"
+    "sequelize": "^6.2.4",
+    "sequelize-cli": "^6.1.0",
+    "sqlite3": "^5.0.0"
+  },
+  "devDependencies": {
+    "node-addon-api": "^3.0.0",
+    "node-gyp": "^7.0.0",
+    "node-pre-gyp": "^0.15.0"
   }
 }

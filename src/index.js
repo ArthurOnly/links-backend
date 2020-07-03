@@ -1,6 +1,5 @@
 const express = require('express')
-const db = require('./models')
-
+const db = require('./models/index')
 const authController = require('./controllers/auth')
 
 const app = express()
