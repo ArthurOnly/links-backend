@@ -19,7 +19,7 @@ const jsonOk = function(data, message, metadata){
 }
 
 const jsonBadRequest = function(data, message, metadata){      
-    this.message = message = message ? message : getMessage('response.badRequest')
+    this.message = message = message ? message : getMessage('response.jsonBadRequest')
     this.metadata = metadata = metadata ? metadata : {}
 
     this.status(STATUS_CODE_BAD_REQUEST)
@@ -29,7 +29,7 @@ const jsonBadRequest = function(data, message, metadata){
 }
 
 const jsonUnauthorized = function(data, message, metadata){      
-    this.message = message = message ? message : getMessage('response.unauthorized')
+    this.message = message = message ? message : getMessage('response.jsonUnauthorized')
     this.metadata = metadata = metadata ? metadata : {}
 
     this.status(STATUS_CODE_UNAUTHORIZED)
@@ -39,7 +39,7 @@ const jsonUnauthorized = function(data, message, metadata){
 }
 
 const jsonNotFound = function(data, message, metadata){      
-    this.message = message = message ? message : getMessage('response.notFound')
+    this.message = message = message ? message : getMessage('response.jsonNotFound')
     this.metadata = metadata = metadata ? metadata : {}
 
     this.status(STATUS_CODE_NOT_FOUND)
@@ -49,7 +49,7 @@ const jsonNotFound = function(data, message, metadata){
 }
 
 const jsonServerError = function(data, message, metadata){      
-    this.message = message = message ? message : getMessage('response.serverError')
+    this.message = message = message ? message : getMessage('response.jsonServerError')
     this.metadata = metadata = metadata ? metadata : {}
 
     this.status(STATUS_CODE_SERVER_ERROR)

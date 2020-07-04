@@ -10,6 +10,10 @@ module.exports = (Sequelize, DataTypes) => {
     }
   })
 
+  Account.associate = models => {
+    Account.hasMany(models.Link, {foreignKey: 'accountId'})
+  }
+
   Account.prototype.toJSON = function(){
     const fields = { ...this.get() }
     delete fields.password
