@@ -23,7 +23,7 @@
     "sqlite3": "^5.0.0"
   },
   "devDependencies": {
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "node-addon-api": "^3.0.0",
     "node-gyp": "^7.0.0",
     "node-pre-gyp": "^0.15.0"
